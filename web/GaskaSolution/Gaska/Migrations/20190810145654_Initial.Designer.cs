@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gaska.Migrations
 {
     [DbContext(typeof(GaskaDbContext))]
-    [Migration("20190805195931_first")]
-    partial class first
+    [Migration("20190810145654_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
