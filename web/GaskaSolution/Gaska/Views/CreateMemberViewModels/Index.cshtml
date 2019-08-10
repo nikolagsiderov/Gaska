@@ -1,0 +1,96 @@
+@model IEnumerable<Gaska.Models.CreateMembers.CreateMemberViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.game)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.server)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.guildName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.guildAdmin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.guildLeader)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.guildMemberAuthenticationTokenNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CharacterName1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CharacterName2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CharacterName3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CharacterName4)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CharacterName5)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.game)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.server)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.guildName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.guildAdmin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.guildLeader)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.guildMemberAuthenticationTokenNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterName1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterName2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterName3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterName4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterName5)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,89 @@
+﻿@*@model IEnumerable<Gaska.Data.Models.OilsFiltersLog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Oil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mileage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChangeDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedNextChangeDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OilFilter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AirFilter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuelFilter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PollenFilter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Service)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Oil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mileage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChangeDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpectedNextChangeDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OilFilter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AirFilter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelFilter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PollenFilter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OilsFiltersLogId"><button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button></a> &nbsp;
+                <a asp-action="Details" asp-route-id="@item.OilsFiltersLogId"><button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i></button></a> &nbsp;
+                <a asp-action="Delete" asp-route-id="@item.OilsFiltersLogId"><button type="button" class="btn btn-info"><i class="far fa-trash-alt"></i></button></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@

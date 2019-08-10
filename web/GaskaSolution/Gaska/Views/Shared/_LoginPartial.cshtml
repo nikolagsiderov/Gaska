@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Gaska.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
+        <span>&nbsp;&nbsp;</span>
+        <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">@UserManager.GetUserName(User)</a>
+        <br />
+        <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
+    </form>
+}
+else
+{
+    <a asp-area="" asp-controller="Account" asp-action="Login">Log In</a>
+}

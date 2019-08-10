@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Gaska.Data.Models.Car>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+
+<h2>Моите коли</h2>
+
+<hr />
+
+<p>
+    <a asp-action="Create"><button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Добави кола</button></a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Намери: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <a asp-action="Create"><button type="button" class="btn btn-primary"><i class="fas fa-search"></i> Търси</button></a> |
+            <a asp-action="Index">Покажи целия списък с коли</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["BrandSortParm"]">Марка</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["ModelSortParm"]">Модел</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CarId"><button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button></a> &nbsp;
+                <a asp-action="Details" asp-route-id="@item.CarId"><button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i> Сервизна книжка</button></a> &nbsp;
+                <a asp-action="Delete" asp-route-id="@item.CarId"><button type="button" class="btn btn-info"><i class="far fa-trash-alt"></i></button></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

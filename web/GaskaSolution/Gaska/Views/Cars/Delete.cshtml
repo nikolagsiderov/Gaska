@@ -1,0 +1,67 @@
+﻿@model Gaska.Data.Models.Car
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<br />
+<h3>Сигурен ли сте, че искате да изтрийте записа?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Марка
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Brand)
+        </dd>
+        <dt>
+            Модел
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt>
+            Цвят
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        <dt>
+            Дата на производство
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductionYear)
+        </dd>
+        <dt>
+            Регистрационен номер
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationPlate)
+        </dd>
+        <dt>
+            Собственик
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+        <dt>
+            Дата на закупуване
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseDate)
+        </dd>
+        <dt>
+            Километри
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mileage)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CarId" />
+        <input type="submit" value="Изтрий" class="btn btn-default" /> |
+        <a asp-action="Index">Назад</a>
+    </form>
+</div>

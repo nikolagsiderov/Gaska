@@ -1,0 +1,82 @@
+﻿@model Gaska.Data.Models.ServiceBookLog
+
+@{
+    ViewData["Title"] = "Create";
+}
+<br />
+<h2>Добави запис към сервизната история</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label">Дата</label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mileage" class="control-label">Километри</label>
+                <input asp-for="Mileage" class="form-control" />
+                <span asp-validation-for="Mileage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="ServiceType" class="control-label">Тип Сервиз</label>
+                    <select asp-for="ServiceType" class="form-control" id="sel1">
+                        <option>Слабо значителен</option>
+                        <option>Силно значителен</option>
+                        <option>Инспекция</option>
+                    </select>
+                </div>
+                <span asp-validation-for="ServiceType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NextServiceDate" class="control-label">Следващ сервиз по дата</label>
+                <input asp-for="NextServiceDate" class="form-control" />
+                <span asp-validation-for="NextServiceDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NextServiceMileage" class="control-label">Следващ сервиз по километри</label>
+                <input asp-for="NextServiceMileage" class="form-control" />
+                <span asp-validation-for="NextServiceMileage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="CarWork" class="control-label">Какво е работено по колата</label>
+                    <select asp-for="CarWork" class="form-control" id="sel1">
+                        <option>Масло и маслен филтър</option>
+                        <option>Въздушен филтър</option>
+                        <option>Горивен филтър</option>
+                        <option>Поленов филтър</option>
+                        <option>Охлаждаща течност</option>
+                        <option>Спирачна течност</option>
+                        <option>Предавателна течност</option>
+                        <option>Ангренажен ремък</option>
+                        <option>Свещи</option>
+                        <option>Спирачни накладки</option>
+                        <option>Спирачни дискове</option>
+                        <option>Акумулатор</option>
+                    </select>
+                </div>
+                <span asp-validation-for="CarWork" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Details" class="control-label">Детайли</label>
+                <input asp-for="Details" class="form-control" />
+                <span asp-validation-for="Details" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Добави</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Cars">Назад към колите</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,60 @@
+﻿@model Gaska.Data.Models.ServiceBookLog
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<br />
+<h3>Сигурен ли сте, че искате да изтрийте записа?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Дата
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            Километри
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mileage)
+        </dd>
+        <dt>
+            Тип сервиз
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ServiceType)
+        </dd>
+        <dt>
+            Следващ сервиз по дата
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NextServiceDate)
+        </dd>
+        <dt>
+            Следващ сервиз по километри
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NextServiceMileage)
+        </dd>
+        <dt>
+            Какво е работено по колата
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CarWork)
+        </dd>
+        <dt>
+            Детайли
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ServiceBookLogId" />
+        <input type="submit" value="Изтрий" class="btn btn-default" /> |
+        <a asp-action="Index" asp-controller="Cars">Назад към колите</a>
+    </form>
+</div>

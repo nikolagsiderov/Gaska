@@ -1,0 +1,70 @@
+﻿@model Gaska.Data.Models.Car
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br />
+
+<h2>Промени</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CarId" />
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label">Марка</label>
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label">Модел</label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color" class="control-label">Цвят</label>
+                <input asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductionYear" class="control-label">Дата на производство</label>
+                <input asp-for="ProductionYear" class="form-control" />
+                <span asp-validation-for="ProductionYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegistrationPlate" class="control-label">Регистрационен номер</label>
+                <input asp-for="RegistrationPlate" class="form-control" />
+                <span asp-validation-for="RegistrationPlate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Owner" class="control-label">Собственик</label>
+                <input asp-for="Owner" class="form-control" />
+                <span asp-validation-for="Owner" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PurchaseDate" class="control-label">Дата на закупуване</label>
+                <input asp-for="PurchaseDate" class="form-control" />
+                <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mileage" class="control-label">Километри</label>
+                <input asp-for="Mileage" class="form-control" />
+                <span asp-validation-for="Mileage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Запази" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

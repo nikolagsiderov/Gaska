@@ -1,0 +1,146 @@
+﻿@model Gaska.Data.Models.Car
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br />
+
+<h2>Детайли</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <div class="row">
+            <div class="col-md-3">
+                <dt>
+                    Марка
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Brand)
+                </dd>
+            </div>
+            <div class="col-md-3">
+                <dt>
+                    Модел
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Model)
+                </dd>
+            </div>
+            <div class="col-md-3">
+                <dt>
+                    Цвят
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Color)
+                </dd>
+            </div>
+            <div class="col-md-3">
+                <dt>
+                    Дата на производство
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductionYear)
+                </dd>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <dt>
+                    Регистрационен номер
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.RegistrationPlate)
+                </dd>
+            </div>
+            <div class="col-md-3">
+                <dt>
+                    Собственик
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Owner)
+                </dd>
+            </div>
+            <div class="col-md-3">
+                <dt>
+                    Дата на закупуване
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PurchaseDate)
+                </dd>
+            </div>
+            <div class="col-md-3">
+                <dt>
+                    Километри
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Mileage)
+                </dd>
+            </div>
+        </div>
+        <br />
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.CarId">Промени</a> |
+            <a asp-action="Index">Назад</a>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-md-auto">
+                <span><a asp-area="" asp-controller="ServiceBookLogs" asp-action="Create" asp-route-id="@Model.CarId" class="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="top" title="Добави запис към сервизната история"><i class="fas fa-oil-can" style="font-size:20px"></i></a></span>
+            </div>
+        </div>
+
+        <br />
+
+        <h4>Сервизна книжка</h4>
+
+        <br />
+
+        <dd class="col-sm-12">
+            <table class="table">
+                <tr>
+                    <th>Дата</th>
+                    <th>Километри</th>
+                    <th>Тип сервиз</th>
+                    <th>Следващ сервиз по дата</th>
+                    <th>Следващ сервиз по километри</th>
+                    <th>Какво е работено по колата</th>
+                    <th>Детайли</th>
+                </tr>
+                @foreach (var item in Model.ServiceBooks)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceBookLog.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceBookLog.Mileage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceBookLog.ServiceType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceBookLog.NextServiceDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceBookLog.NextServiceMileage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceBookLog.CarWork)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceBookLog.Details)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="ServiceBookLogs" asp-route-id="@item.ServiceBookLog.ServiceBookLogId"><button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button></a> &nbsp;
+                        <a asp-action="Details" asp-controller="ServiceBookLogs" asp-route-id="@item.ServiceBookLog.ServiceBookLogId"><button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i></button></a> &nbsp;
+                        <a asp-action="Delete" asp-controller="ServiceBookLogs" asp-route-id="@item.ServiceBookLog.ServiceBookLogId"><button type="button" class="btn btn-info"><i class="far fa-trash-alt"></i></button></a>
+                    </td>
+                </tr>
+                }
+            </table>
+    </dl>
+</div>

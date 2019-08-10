@@ -1,0 +1,59 @@
+﻿@model Gaska.Data.Models.ServiceBookLog
+
+@{
+    ViewData["Title"] = "Details";
+}
+<br />
+<h2>Детайли</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Дата
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            Километри
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mileage)
+        </dd>
+        <dt>
+            Тип сервиз
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ServiceType)
+        </dd>
+        <dt>
+            Следващ сервиз по дата
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NextServiceDate)
+        </dd>
+        <dt>
+            Следващ сервиз по километри
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NextServiceMileage)
+        </dd>
+        <dt>
+            Какво е работено по колата
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CarWork)
+        </dd>
+        <dt>
+            Детайли
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ServiceBookLogId">Промени</a> |
+    <a asp-action="Index" asp-controller="Cars">Назад към колите</a>
+</div>

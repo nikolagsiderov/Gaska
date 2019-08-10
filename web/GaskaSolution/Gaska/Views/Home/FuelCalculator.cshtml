@@ -1,0 +1,81 @@
+﻿@using Gaska.Models
+
+@{
+    ViewData["Title"] = "FuelCalculator";
+}
+
+@model Gaska.Models.FuelCalculatorViewModel
+
+<br />
+<h2>Изчисли разхода си на гориво</h2>
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="FuelCalculator" asp-controller="Home">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Distance">Разстояние</label>
+                    <input type="text" class="form-control" id="distance" asp-for="Distance" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="DistanceUnit">Мерна единица за разстояние</label>
+                    <select id="inputUnit" class="form-control" asp-for="DistanceUnit">
+                        <option selected>Километри</option>
+                        <option>Мили</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="FuelVolume">Обем на гориво</label>
+                    <input type="text" class="form-control" id="fuelVolume" asp-for="FuelVolume" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="FuelUnit">Мерна единица за гориво</label>
+                    <select class="form-control" asp-for="FuelUnit">
+                        <option selected>Литри</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="button" class="btn btn-primary" value="Изчисли" onclick="calc()" />
+
+            <br />
+            <hr />
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Разход в литри на 100 километра</label>
+                    <input type="text" class="form-control" id="littersFor100kms" readonly="readonly" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Изминати километри за литър</label>
+                    <input type="text" class="form-control" id="kmsForOneLitter" readonly="readonly" />
+                </div>
+            </div>
+
+            <script>
+                function calc() {
+                    let distance = document.getElementById('distance').value;
+                    let fuelVolume = document.getElementById('fuelVolume').value;
+
+                    if (!distance || !fuelVolume) {
+                        document.getElementById('littersFor100kms').value = '';
+                        document.getElementById('kmsForOneLitter').value = '';
+
+                        return;
+                    }
+
+                    let littersFor100kms = (Number(fuelVolume) / Number(distance)) * 100;
+                    let kmsForOneLitter = Number(distance) / Number(fuelVolume);
+
+                    document.getElementById('littersFor100kms').value = littersFor100kms.toFixed(2);
+                    document.getElementById('kmsForOneLitter').value = kmsForOneLitter.toFixed(2);
+                }
+            </script>
+        </form>
+    </div>
+</div>

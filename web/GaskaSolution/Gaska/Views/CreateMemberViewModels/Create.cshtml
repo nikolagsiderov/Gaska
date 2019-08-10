@@ -1,0 +1,133 @@
+@model Gaska.Models.CreateMembers.CreateMemberViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>CreateMemberViewModel</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="game" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="game">
+                    <option value="EverQuest">EverQuest</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="server" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="server">
+                    <option value="Antonius Bayle">Antonius Bayle</option>
+                    <option value="Bertoxxulous">Berotoxxulous</option>
+                    <option value="Beta">Beta</option>
+                    <option value="Bristlebane">Bristlebane</option>
+                    <option value="Cazic Thule">Cazic Thule</option>
+                    <option value="Drinal">Drinal</option>
+                    <option value="Erollisi Marr">Erollisi Marr</option>
+                    <option value="Fippy Darkpaw">Fippy Darkpaw</option>
+                    <option value="Firiona Vie">Firiona Vie</option>
+                    <option value="Lockjaw">Lockjaw</option>
+                    <option value="Luclin">Luclin</option>
+                    <option value="Phinigel">Phinigel</option>
+                    <option value="Povar">Povar</option>
+                    <option value="Quarm">Quarm</option>
+                    <option value="Ragefire">Ragefire</option>
+                    <option value="Test">Test</option>
+                    <option value="The Rathe">The Rathe</option>
+                    <option value="Trakanon">Trakanon</option>
+                    <option value="Tunare">Tunare</option>
+                    <option value="Vox">Vox</option>
+                    <option value="Vulak`Aerr">Vulak`Aerr</option>
+                    <option value="Xegony">Xegony</option>
+                    <option value="Zek">Zek</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="guildName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="guildName" class="form-control" />
+                <span asp-validation-for="guildName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="guildAdmin" />
+                    <label asp-for="guildAdmin"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="guildLeader" />
+                    <label asp-for="guildLeader"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="guildMemberAuthenticationTokenNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="guildMemberAuthenticationTokenNumber" class="form-control" />
+                <span asp-validation-for="guildMemberAuthenticationTokenNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CharacterName1" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CharacterName1" class="form-control" />
+                <span asp-validation-for="CharacterName1" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CharacterName2" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CharacterName2" class="form-control" />
+                <span asp-validation-for="CharacterName2" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CharacterName3" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CharacterName3" class="form-control" />
+                <span asp-validation-for="CharacterName3" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CharacterName4" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CharacterName4" class="form-control" />
+                <span asp-validation-for="CharacterName4" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CharacterName5" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CharacterName5" class="form-control" />
+                <span asp-validation-for="CharacterName5" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
