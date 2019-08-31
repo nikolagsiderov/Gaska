@@ -31,6 +31,8 @@ namespace Gaska.Data.Models
         [Required]
         public int Mileage { get; set; }
 
+        public string Image { get; set; }
+
         [ForeignKey("dbo.AspNetUsers")]
         public string UserId { get; set; }
 

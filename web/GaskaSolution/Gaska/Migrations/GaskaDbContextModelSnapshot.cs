@@ -30,6 +30,8 @@ namespace Gaska.Migrations
 
                     b.Property<string>("Color");
 
+                    b.Property<string>("Image");
+
                     b.Property<int>("Mileage");
 
                     b.Property<string>("Model")

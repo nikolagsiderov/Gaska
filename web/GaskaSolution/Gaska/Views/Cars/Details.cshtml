@@ -12,65 +12,57 @@
     <hr />
     <dl class="dl-horizontal">
         <div class="row">
-            <div class="col-md-3">
+            @if (!string.IsNullOrEmpty(Model.Image))
+            {
+                <div style="padding-left: 10px;">
+                    <dd>
+                        <img class="img-responsive rounded" style="max-width:500px; max-height:500px" src="@Url.Content("~/images/carimages/" + Model.Image)" alt="Car Image">
+                    </dd>
+                </div>
+            }
+            <div class="col-md-6">
                 <dt>
                     Марка
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Brand)
                 </dd>
-            </div>
-            <div class="col-md-3">
                 <dt>
                     Модел
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Model)
                 </dd>
-            </div>
-            <div class="col-md-3">
                 <dt>
                     Цвят
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Color)
                 </dd>
-            </div>
-            <div class="col-md-3">
                 <dt>
                     Дата на производство
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.ProductionYear)
                 </dd>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
                 <dt>
                     Регистрационен номер
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.RegistrationPlate)
                 </dd>
-            </div>
-            <div class="col-md-3">
                 <dt>
                     Собственик
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Owner)
                 </dd>
-            </div>
-            <div class="col-md-3">
                 <dt>
                     Дата на закупуване
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.PurchaseDate)
                 </dd>
-            </div>
-            <div class="col-md-3">
                 <dt>
                     Километри
                 </dt>
@@ -112,34 +104,34 @@
                 </tr>
                 @foreach (var item in Model.ServiceBooks)
                 {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ServiceBookLog.Date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ServiceBookLog.Mileage)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ServiceBookLog.ServiceType)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ServiceBookLog.NextServiceDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ServiceBookLog.NextServiceMileage)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ServiceBookLog.CarWork)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ServiceBookLog.Details)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-controller="ServiceBookLogs" asp-route-id="@item.ServiceBookLog.ServiceBookLogId"><button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button></a> &nbsp;
-                        <a asp-action="Details" asp-controller="ServiceBookLogs" asp-route-id="@item.ServiceBookLog.ServiceBookLogId"><button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i></button></a> &nbsp;
-                        <a asp-action="Delete" asp-controller="ServiceBookLogs" asp-route-id="@item.ServiceBookLog.ServiceBookLogId"><button type="button" class="btn btn-info"><i class="far fa-trash-alt"></i></button></a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ServiceBookLog.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ServiceBookLog.Mileage)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ServiceBookLog.ServiceType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ServiceBookLog.NextServiceDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ServiceBookLog.NextServiceMileage)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ServiceBookLog.CarWork)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ServiceBookLog.Details)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="ServiceBookLogs" asp-route-id="@item.ServiceBookLog.ServiceBookLogId"><button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button></a> &nbsp;
+                            <a asp-action="Details" asp-controller="ServiceBookLogs" asp-route-id="@item.ServiceBookLog.ServiceBookLogId"><button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i></button></a> &nbsp;
+                            <a asp-action="Delete" asp-controller="ServiceBookLogs" asp-route-id="@item.ServiceBookLog.ServiceBookLogId"><button type="button" class="btn btn-info"><i class="far fa-trash-alt"></i></button></a>
+                        </td>
+                    </tr>
                 }
             </table>
     </dl>

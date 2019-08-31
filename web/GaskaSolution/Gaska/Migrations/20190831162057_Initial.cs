@@ -61,6 +61,7 @@ namespace Gaska.Migrations
                     Owner = table.Column<string>(nullable: true),
                     PurchaseDate = table.Column<DateTime>(nullable: false),
                     Mileage = table.Column<int>(nullable: false),
+                    Image = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

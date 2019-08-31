@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CarId" />
             <div class="form-group">
@@ -53,6 +53,12 @@
                 <label asp-for="Mileage" class="control-label">Километри</label>
                 <input asp-for="Mileage" class="form-control" />
                 <span asp-validation-for="Mileage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Качи снимка</label>
+                <br />
+                <input asp-for="Image" type="file" />
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Запази" class="btn btn-default" />

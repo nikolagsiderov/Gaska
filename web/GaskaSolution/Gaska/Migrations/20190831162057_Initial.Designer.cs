@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gaska.Migrations
 {
     [DbContext(typeof(GaskaDbContext))]
-    [Migration("20190810145654_Initial")]
+    [Migration("20190831162057_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,6 +31,8 @@ namespace Gaska.Migrations
                         .IsRequired();
 
                     b.Property<string>("Color");
+
+                    b.Property<string>("Image");
 
                     b.Property<int>("Mileage");
 

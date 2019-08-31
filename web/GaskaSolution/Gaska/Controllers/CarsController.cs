@@ -7,6 +7,8 @@ using Gaska.Data.DbContexts;
 using Gaska.Data.Models;
 using Gaska.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Gaska.Controllers
 {
@@ -89,13 +91,24 @@ namespace Gaska.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CarId,Brand,Model,Color,ProductionYear,RegistrationPlate,Owner,PurchaseDate,Mileage,UserId")] Car car)
+        public async Task<IActionResult> Create(Car car, IFormFile image)
         {
             var currentUserId = userManager.GetUserId(User);
 
             if (ModelState.IsValid)
             {
                 car.UserId = currentUserId;
+
+                if (image != null && image.Length > 0)
+                {
+                    var fileName = Path.GetFileName(image.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images\\carimages", fileName);
+                    using (var fileSteam = new FileStream(filePath, FileMode.Create))
+                    {
+                        await image.CopyToAsync(fileSteam);
+                    }
+                    car.Image = fileName;
+                }
 
                 _context.Add(car);
                 await _context.SaveChangesAsync();
@@ -125,7 +138,7 @@ namespace Gaska.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CarId,Brand,Model,Color,ProductionYear,RegistrationPlate,Owner,PurchaseDate,Mileage,UserId")] Car car)
+        public async Task<IActionResult> Edit(int id, Car car, IFormFile image)
         {
             if (id != car.CarId)
             {
@@ -136,6 +149,17 @@ namespace Gaska.Controllers
             {
                 try
                 {
+                    if (image != null && image.Length > 0)
+                    {
+                        var fileName = $"{car.CarId}_{car.Brand}_{car.Model}.{image.FileName.Split('.').Last()}";
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images\\carimages", fileName);
+                        using (var fileSteam = new FileStream(filePath, FileMode.Create))
+                        {
+                            await image.CopyToAsync(fileSteam);
+                        }
+                        car.Image = fileName;
+                    }
+
                     _context.Update(car);
                     await _context.SaveChangesAsync();
                 }
