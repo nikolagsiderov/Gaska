@@ -100,7 +100,6 @@
                     <th>Следващ сервиз по дата</th>
                     <th>Следващ сервиз по километри</th>
                     <th>Какво е работено по колата</th>
-                    <th>Детайли</th>
                 </tr>
                 @foreach (var item in Model.ServiceBooks)
                 {
@@ -122,9 +121,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ServiceBookLog.CarWork)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ServiceBookLog.Details)
                         </td>
                         <td>
                             <a asp-action="Edit" asp-controller="ServiceBookLogs" asp-route-id="@item.ServiceBookLog.ServiceBookLogId"><button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button></a> &nbsp;
