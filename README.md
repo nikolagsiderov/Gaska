@@ -1,6 +1,6 @@
 # Gaska
 
-Gaska is going to be a multi mobile and web platform for calculating fuel consumption, storing service book logs and more.
+Gaska is a web platform for calculating fuel consumption, storing service book logs and more.
 
 # What I Learned
 
