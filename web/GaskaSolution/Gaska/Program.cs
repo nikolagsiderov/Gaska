@@ -1,6 +1,5 @@
 ﻿using System;
 using Gaska.Data;
-using Gaska.Data.DbContexts;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;

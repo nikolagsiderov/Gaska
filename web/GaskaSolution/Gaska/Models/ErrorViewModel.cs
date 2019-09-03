@@ -1,4 +1,3 @@
-
 namespace Gaska.Models
 {
     public class ErrorViewModel

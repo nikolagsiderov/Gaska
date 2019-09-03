@@ -70,52 +70,6 @@ namespace Gaska.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CreateGuildViewModel",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    game = table.Column<string>(nullable: false),
-                    server = table.Column<string>(nullable: false),
-                    guildName = table.Column<string>(nullable: false),
-                    guildAdmin = table.Column<bool>(nullable: false),
-                    guildLeader = table.Column<bool>(nullable: false),
-                    guildMemberAuthenticationTokenNumber = table.Column<string>(nullable: true),
-                    CharacterName1 = table.Column<string>(nullable: false),
-                    CharacterName2 = table.Column<string>(nullable: true),
-                    CharacterName3 = table.Column<string>(nullable: true),
-                    CharacterName4 = table.Column<string>(nullable: true),
-                    CharacterName5 = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CreateGuildViewModel", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CreateMemberViewModel",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    game = table.Column<string>(nullable: false),
-                    server = table.Column<string>(nullable: false),
-                    guildName = table.Column<string>(nullable: false),
-                    guildAdmin = table.Column<bool>(nullable: false),
-                    guildLeader = table.Column<bool>(nullable: false),
-                    guildMemberAuthenticationTokenNumber = table.Column<string>(nullable: true),
-                    CharacterName1 = table.Column<string>(nullable: false),
-                    CharacterName2 = table.Column<string>(nullable: true),
-                    CharacterName3 = table.Column<string>(nullable: true),
-                    CharacterName4 = table.Column<string>(nullable: true),
-                    CharacterName5 = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CreateMemberViewModel", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ServiceBookLog",
                 columns: table => new
                 {
@@ -332,12 +286,6 @@ namespace Gaska.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "CreateGuildViewModel");
-
-            migrationBuilder.DropTable(
-                name: "CreateMemberViewModel");
 
             migrationBuilder.DropTable(
                 name: "ServiceBook");

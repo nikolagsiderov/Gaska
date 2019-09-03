@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Gaska.Data.DbContexts;
 using Gaska.Data.Models;
+using Gaska.Data;
 
 namespace Gaska.Controllers
 {
