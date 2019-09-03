@@ -177,6 +177,28 @@ namespace Gaska.Controllers
                         }
                         car.Image = fileName;
                     }
+                    else
+                    {
+                        string currentUserIdString = string.Empty;
+
+                        if (car.UserId == null)
+                        {
+                            currentUserIdString = "null";
+                        }
+                        else
+                        {
+                            currentUserIdString = car.UserId.ToString();
+                        }
+
+                        foreach (var carImage in _context.Cars.Select(x => x.Image))
+                        {
+                            if (carImage.Split('.').First().Split('_').Last() == currentUserIdString && carImage.Split('.').First().Split('_').First() == car.Brand
+                                && carImage.Split('.').First().Split('_')[1] == car.Model)
+                            {
+                                car.Image = carImage;
+                            }
+                        }
+                    }
 
                     _context.Update(car);
                     await _context.SaveChangesAsync();
