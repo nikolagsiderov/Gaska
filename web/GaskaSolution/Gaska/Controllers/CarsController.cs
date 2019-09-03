@@ -101,7 +101,16 @@ namespace Gaska.Controllers
 
                 if (image != null && image.Length > 0)
                 {
-                    var fileName = Path.GetFileName(image.FileName);
+                    var fileName = string.Empty;
+
+                    if (car.UserId != null)
+                    {
+                        fileName = $"{car.Brand}_{car.Model}_{car.UserId}.{image.FileName.Split('.').Last()}";
+                    }
+                    else
+                    {
+                        fileName = $"{car.Brand}_{car.Model}_null.{image.FileName.Split('.').Last()}";
+                    }
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images\\carimages", fileName);
                     using (var fileSteam = new FileStream(filePath, FileMode.Create))
                     {
@@ -151,7 +160,16 @@ namespace Gaska.Controllers
                 {
                     if (image != null && image.Length > 0)
                     {
-                        var fileName = $"{car.CarId}_{car.Brand}_{car.Model}.{image.FileName.Split('.').Last()}";
+                        var fileName = string.Empty;
+
+                        if (car.UserId != null)
+                        {
+                            fileName = $"{car.Brand}_{car.Model}_{car.UserId}.{image.FileName.Split('.').Last()}";
+                        }
+                        else
+                        {
+                            fileName = $"{car.Brand}_{car.Model}_null.{image.FileName.Split('.').Last()}";
+                        }
                         var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images\\carimages", fileName);
                         using (var fileSteam = new FileStream(filePath, FileMode.Create))
                         {
@@ -202,6 +220,35 @@ namespace Gaska.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var currentUserId = userManager.GetUserId(User);
+            string currentUserIdString = string.Empty;
+
+            if (currentUserId == null)
+            {
+                currentUserIdString = "null";
+            }
+            else
+            {
+                currentUserIdString = currentUserId.ToString();
+            }
+
+            string rootFolder = @"wwwroot\\images\\carimages\\";
+
+            foreach (var carImage in _context.Cars.Select(x => x.Image))
+            {
+                if (carImage.Split('.').First().Split('_').Last() == currentUserIdString)
+                {
+                    try
+                    {
+                        System.IO.File.Delete(Path.Combine(rootFolder, carImage));
+                    }
+                    catch (IOException ioExp)
+                    {
+                    }
+                }
+
+            }
+
             var car = await _context.Cars.FindAsync(id);
             _context.Cars.Remove(car);
             await _context.SaveChangesAsync();
