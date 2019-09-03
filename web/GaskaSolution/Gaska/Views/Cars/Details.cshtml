@@ -97,8 +97,6 @@
                     <th>Дата</th>
                     <th>Километри</th>
                     <th>Тип сервиз</th>
-                    <th>Следващ сервиз по дата</th>
-                    <th>Следващ сервиз по километри</th>
                     <th>Какво е работено по колата</th>
                 </tr>
                 @foreach (var item in Model.ServiceBooks)
@@ -112,12 +110,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ServiceBookLog.ServiceType)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ServiceBookLog.NextServiceDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ServiceBookLog.NextServiceMileage)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ServiceBookLog.CarWork)

@@ -15,11 +15,9 @@
         <form asp-action="FuelCalculator" asp-controller="Home">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label asp-for="Distance">Разстояние</label>
-                    <input type="text" class="form-control" id="distance" asp-for="Distance" />
+                    <input type="text" class="form-control" id="distance" placeholder="Разстояние" asp-for="Distance" />
                 </div>
                 <div class="form-group col-md-6">
-                    <label asp-for="DistanceUnit">Мерна единица за разстояние</label>
                     <select id="inputUnit" class="form-control" asp-for="DistanceUnit">
                         <option selected>Километри</option>
                         <option>Мили</option>
@@ -28,11 +26,9 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label asp-for="FuelVolume">Обем на гориво</label>
-                    <input type="text" class="form-control" id="fuelVolume" asp-for="FuelVolume" />
+                    <input type="text" class="form-control" id="fuelVolume" placeholder="Обем на гориво" asp-for="FuelVolume" />
                 </div>
                 <div class="form-group col-md-6">
-                    <label asp-for="FuelUnit">Мерна единица за гориво</label>
                     <select class="form-control" asp-for="FuelUnit">
                         <option selected>Литри</option>
                     </select>
