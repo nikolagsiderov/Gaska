@@ -124,7 +124,11 @@ namespace Gaska.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index", "Cars");
+
+                var carId = _context.ServiceBooks.Where(x => x.ServiceBookId == id).Select(x => x.CarId).First();
+                id = carId;
+                
+                return RedirectToAction("Details", "Cars", new { id });
             }
             return View(serviceBookLog);
         }
@@ -152,10 +156,15 @@ namespace Gaska.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var carId = _context.ServiceBooks.Where(x => x.ServiceBookId == id).Select(x => x.CarId).First();
+
             var serviceBookLog = await _context.ServiceBookLogs.FindAsync(id);
             _context.ServiceBookLogs.Remove(serviceBookLog);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Cars");
+
+            id = carId;
+
+            return RedirectToAction("Details", "Cars", new { id });
         }
 
         private bool ServiceBookLogExists(int id)
