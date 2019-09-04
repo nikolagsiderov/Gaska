@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gaska.Data
 {
-    public class GaskaDbContext : IdentityDbContext<ApplicationUser>
+    public class DataAccessContext : IdentityDbContext<ApplicationUser>
     {
-        public GaskaDbContext(DbContextOptions<GaskaDbContext> options) : base(options)
+        public DataAccessContext(DbContextOptions<DataAccessContext> options) : base(options)
         {
         }
         

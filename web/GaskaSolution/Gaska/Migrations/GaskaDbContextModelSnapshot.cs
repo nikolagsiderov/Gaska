@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Gaska.Migrations
 {
-    [DbContext(typeof(GaskaDbContext))]
+    [DbContext(typeof(DataAccessContext))]
     partial class GaskaDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

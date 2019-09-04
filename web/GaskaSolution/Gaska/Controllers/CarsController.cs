@@ -14,10 +14,10 @@ namespace Gaska.Controllers
 {
     public class CarsController : Controller
     {
-        private readonly GaskaDbContext _context;
+        private readonly DataAccessContext _context;
         private UserManager<ApplicationUser> userManager;
 
-        public CarsController(GaskaDbContext context, UserManager<ApplicationUser> userManager)
+        public CarsController(DataAccessContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             this.userManager = userManager;

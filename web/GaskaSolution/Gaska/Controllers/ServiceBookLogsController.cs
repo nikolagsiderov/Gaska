@@ -9,9 +9,9 @@ namespace Gaska.Controllers
 {
     public class ServiceBookLogsController : Controller
     {
-        private readonly GaskaDbContext _context;
+        private readonly DataAccessContext _context;
 
-        public ServiceBookLogsController(GaskaDbContext context)
+        public ServiceBookLogsController(DataAccessContext context)
         {
             _context = context;
         }

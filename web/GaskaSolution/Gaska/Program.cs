@@ -18,7 +18,7 @@ namespace Gaska
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<GaskaDbContext>();
+                    var context = services.GetRequiredService<DataAccessContext>();
                     //DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)

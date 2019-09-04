@@ -43,11 +43,11 @@ namespace Gaska
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<GaskaDbContext>(options =>
+            services.AddDbContext<DataAccessContext>(options =>
         options.UseSqlServer(Gaska.Data.Configuration.ConnectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<GaskaDbContext>()
+                .AddEntityFrameworkStores<DataAccessContext>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
