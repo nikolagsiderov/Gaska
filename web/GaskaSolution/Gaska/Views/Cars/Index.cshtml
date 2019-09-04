@@ -18,8 +18,8 @@
     <div class="form-actions no-color">
         <p>
             Намери: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
-            <a asp-action="Create"><button type="button" class="btn btn-primary"><i class="fas fa-search"></i> Търси</button></a> |
-            <a asp-action="Index">Покажи целия списък с коли</a>
+            <a asp-action="Create"><button type="button" class="btn btn-primary"><i class="fas fa-search"></i> Търси</button></a> 
+            <a asp-action="Index" class="btn btn-primary"><i class="far fa-eye"></i> Покажи целия списък с коли</a>
         </p>
     </div>
 </form>
@@ -46,9 +46,9 @@
                 @Html.DisplayFor(modelItem => item.Model)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CarId"><button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button></a> &nbsp;
+                <a asp-action="Edit" asp-route-id="@item.CarId"><button type="button" class="btn btn-primary"><i class="fas fa-edit"></i></button></a> &nbsp;
                 <a asp-action="Details" asp-route-id="@item.CarId"><button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i> Сервизна книжка</button></a> &nbsp;
-                <a asp-action="Delete" asp-route-id="@item.CarId"><button type="button" class="btn btn-info"><i class="far fa-trash-alt"></i></button></a>
+                <a asp-action="Delete" asp-route-id="@item.CarId"><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>
             </td>
         </tr>
 }
