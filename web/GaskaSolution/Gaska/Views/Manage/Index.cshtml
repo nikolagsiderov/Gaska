@@ -5,22 +5,20 @@
 
 <br />
 
-<h2>@ViewData["Title"]</h2>
-<p class="text-success">@ViewData["StatusMessage"]</p>
-
 <div>
-    <h4>Change your account settings</h4>
+    <h4>Промени настройките на профила си</h4>
+    <p class="text-success">@ViewData["StatusMessage"]</p>
     <hr />
     <dl class="dl-horizontal">
-        <dt>Password:</dt>
+        <dt>Парола:</dt>
         <dd>
             @if (Model.HasPassword)
             {
-                <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change</a>
+                <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Промени</a>
             }
             else
             {
-                <a asp-controller="Manage" asp-action="SetPassword" class="btn-bracketed">Create</a>
+                <a asp-controller="Manage" asp-action="SetPassword" class="btn-bracketed">Създай</a>
             }
         </dd>
     </dl>
