@@ -4,14 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Gaska.Data.Models;
 using Gaska.Data;
+using Microsoft.AspNetCore.Identity;
+using Gaska.Models;
 
 namespace Gaska.Controllers
 {
     public class ServiceBookLogsController : Controller
     {
         private readonly DataAccessContext _context;
+        private UserManager<ApplicationUser> userManager;
 
-        public ServiceBookLogsController(DataAccessContext context)
+        public ServiceBookLogsController(DataAccessContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
         }
@@ -19,12 +22,26 @@ namespace Gaska.Controllers
         // GET: ServiceBookLogs
         public async Task<IActionResult> Index()
         {
+            var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             return View(await _context.ServiceBookLogs.ToListAsync());
         }
 
         // GET: ServiceBookLogs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (id == null)
             {
                 return NotFound();
@@ -43,6 +60,13 @@ namespace Gaska.Controllers
         // GET: ServiceBookLogs/Create
         public IActionResult Create(int? id)
         {
+            var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             return View();
         }
 
@@ -53,6 +77,13 @@ namespace Gaska.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ServiceBookLogId,Date,Mileage,ServiceType,NextServiceDate,NextServiceMileage,CarWork,Details")] ServiceBookLog serviceBookLog)
         {
+            var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(serviceBookLog);
@@ -81,6 +112,13 @@ namespace Gaska.Controllers
         // GET: ServiceBookLogs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (id == null)
             {
                 return NotFound();
@@ -101,6 +139,13 @@ namespace Gaska.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ServiceBookLogId,Date,Mileage,ServiceType,NextServiceDate,NextServiceMileage,CarWork,Details")] ServiceBookLog serviceBookLog)
         {
+            var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (id != serviceBookLog.ServiceBookLogId)
             {
                 return NotFound();
@@ -136,6 +181,13 @@ namespace Gaska.Controllers
         // GET: ServiceBookLogs/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (id == null)
             {
                 return NotFound();
@@ -156,6 +208,13 @@ namespace Gaska.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             var carId = _context.ServiceBooks.Where(x => x.ServiceBookId == id).Select(x => x.CarId).First();
 
             var serviceBookLog = await _context.ServiceBookLogs.FindAsync(id);

@@ -28,6 +28,11 @@ namespace Gaska.Controllers
         {
             var currentUserId = userManager.GetUserId(User);
 
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             ViewData["BrandSortParm"] = String.IsNullOrEmpty(sortOrder) ? "brand_desc" : "";
             ViewData["ModelSortParm"] = sortOrder == "Model" ? "model_desc" : "Model";
             ViewData["CurrentFilter"] = searchString;
@@ -61,6 +66,13 @@ namespace Gaska.Controllers
         // GET: Cars/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (id == null)
             {
                 return NotFound();
@@ -83,6 +95,13 @@ namespace Gaska.Controllers
         // GET: Cars/Create
         public IActionResult Create()
         {
+            var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             return View();
         }
 
@@ -94,6 +113,11 @@ namespace Gaska.Controllers
         public async Task<IActionResult> Create(Car car, IFormFile image)
         {
             var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
             if (ModelState.IsValid)
             {
@@ -129,6 +153,13 @@ namespace Gaska.Controllers
         // GET: Cars/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (id == null)
             {
                 return NotFound();
@@ -149,6 +180,13 @@ namespace Gaska.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Car car, IFormFile image)
         {
+            var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (id != car.CarId)
             {
                 return NotFound();
@@ -222,6 +260,13 @@ namespace Gaska.Controllers
         // GET: Cars/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (id == null)
             {
                 return NotFound();
@@ -243,6 +288,12 @@ namespace Gaska.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var currentUserId = userManager.GetUserId(User);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            
             string currentUserIdString = string.Empty;
 
             if (currentUserId == null)
