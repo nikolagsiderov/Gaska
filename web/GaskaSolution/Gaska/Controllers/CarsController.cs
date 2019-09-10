@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Gaska.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Gaska.Controllers
 {
@@ -24,14 +25,10 @@ namespace Gaska.Controllers
         }
 
         // GET: Cars
+        [Authorize]
         public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             ViewData["BrandSortParm"] = String.IsNullOrEmpty(sortOrder) ? "brand_desc" : "";
             ViewData["ModelSortParm"] = sortOrder == "Model" ? "model_desc" : "Model";
@@ -64,14 +61,10 @@ namespace Gaska.Controllers
         }
 
         // GET: Cars/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             if (id == null)
             {
@@ -93,14 +86,10 @@ namespace Gaska.Controllers
         }
 
         // GET: Cars/Create
+        [Authorize]
         public IActionResult Create()
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             return View();
         }
@@ -113,11 +102,6 @@ namespace Gaska.Controllers
         public async Task<IActionResult> Create(Car car, IFormFile image)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             if (ModelState.IsValid)
             {
@@ -151,14 +135,10 @@ namespace Gaska.Controllers
         }
 
         // GET: Cars/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             if (id == null)
             {
@@ -181,11 +161,6 @@ namespace Gaska.Controllers
         public async Task<IActionResult> Edit(int id, Car car, IFormFile image)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             if (id != car.CarId)
             {
@@ -258,14 +233,10 @@ namespace Gaska.Controllers
         }
 
         // GET: Cars/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             if (id == null)
             {
@@ -288,11 +259,6 @@ namespace Gaska.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
             
             string currentUserIdString = string.Empty;
 

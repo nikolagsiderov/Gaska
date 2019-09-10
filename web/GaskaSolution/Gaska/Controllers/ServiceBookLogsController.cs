@@ -6,6 +6,7 @@ using Gaska.Data.Models;
 using Gaska.Data;
 using Microsoft.AspNetCore.Identity;
 using Gaska.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Gaska.Controllers
 {
@@ -17,30 +18,23 @@ namespace Gaska.Controllers
         public ServiceBookLogsController(DataAccessContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            this.userManager = userManager;
         }
 
         // GET: ServiceBookLogs
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             return View(await _context.ServiceBookLogs.ToListAsync());
         }
 
         // GET: ServiceBookLogs/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             if (id == null)
             {
@@ -58,14 +52,10 @@ namespace Gaska.Controllers
         }
 
         // GET: ServiceBookLogs/Create
+        [Authorize]
         public IActionResult Create(int? id)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             return View();
         }
@@ -78,11 +68,6 @@ namespace Gaska.Controllers
         public async Task<IActionResult> Create([Bind("ServiceBookLogId,Date,Mileage,ServiceType,NextServiceDate,NextServiceMileage,CarWork,Details")] ServiceBookLog serviceBookLog)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             if (ModelState.IsValid)
             {
@@ -110,14 +95,10 @@ namespace Gaska.Controllers
         }
 
         // GET: ServiceBookLogs/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             if (id == null)
             {
@@ -140,11 +121,6 @@ namespace Gaska.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("ServiceBookLogId,Date,Mileage,ServiceType,NextServiceDate,NextServiceMileage,CarWork,Details")] ServiceBookLog serviceBookLog)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             if (id != serviceBookLog.ServiceBookLogId)
             {
@@ -179,14 +155,10 @@ namespace Gaska.Controllers
         }
 
         // GET: ServiceBookLogs/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             if (id == null)
             {
@@ -209,11 +181,6 @@ namespace Gaska.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             var carId = _context.ServiceBooks.Where(x => x.ServiceBookId == id).Select(x => x.CarId).First();
 

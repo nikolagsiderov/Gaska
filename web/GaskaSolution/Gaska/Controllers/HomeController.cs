@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Gaska.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Gaska.Controllers
 {
@@ -15,26 +16,18 @@ namespace Gaska.Controllers
         }
 
         // Dashboard
+        [Authorize]
         public IActionResult Index()
         {
             var currentUserId = userManager.GetUserId(User);
 
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
-
             return View();
         }
-        
+
+        [Authorize]
         public IActionResult FuelCalculator(FuelCalculatorViewModel model)
         {
             var currentUserId = userManager.GetUserId(User);
-
-            if (string.IsNullOrEmpty(currentUserId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
 
             return View();
         }
