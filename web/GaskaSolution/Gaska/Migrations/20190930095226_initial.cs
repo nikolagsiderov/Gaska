@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Gaska.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,6 +67,33 @@ namespace Gaska.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Car", x => x.CarId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Data",
+                columns: table => new
+                {
+                    DataId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DataString = table.Column<string>(nullable: true),
+                    ModuleId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Data", x => x.DataId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Module",
+                columns: table => new
+                {
+                    ModuleId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Module", x => x.ModuleId);
                 });
 
             migrationBuilder.CreateTable(
@@ -286,6 +313,12 @@ namespace Gaska.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Data");
+
+            migrationBuilder.DropTable(
+                name: "Module");
 
             migrationBuilder.DropTable(
                 name: "ServiceBook");

@@ -4,14 +4,16 @@ using Gaska.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Gaska.Migrations
 {
     [DbContext(typeof(DataAccessContext))]
-    partial class GaskaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190930095226_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,6 +52,34 @@ namespace Gaska.Migrations
                     b.HasKey("CarId");
 
                     b.ToTable("Car");
+                });
+
+            modelBuilder.Entity("Gaska.Data.Models.Data", b =>
+                {
+                    b.Property<int>("DataId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DataString");
+
+                    b.Property<int>("ModuleId");
+
+                    b.HasKey("DataId");
+
+                    b.ToTable("Data");
+                });
+
+            modelBuilder.Entity("Gaska.Data.Models.Module", b =>
+                {
+                    b.Property<int>("ModuleId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("ModuleId");
+
+                    b.ToTable("Module");
                 });
 
             modelBuilder.Entity("Gaska.Data.Models.ServiceBook", b =>
