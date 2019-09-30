@@ -46,9 +46,16 @@ namespace Gaska
             services.AddDbContext<DataAccessContext>(options =>
         options.UseSqlServer(Gaska.Data.Configuration.ConnectionString));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<DataAccessContext>()
-                .AddDefaultTokenProviders();
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            options.Password = new PasswordOptions
+            {
+                RequireDigit = false,
+                RequiredLength = 6,
+                RequireLowercase = false,
+                RequireUppercase = false,
+                RequiredUniqueChars = 0,
+                RequireNonAlphanumeric = false
+            }).AddEntityFrameworkStores<DataAccessContext>().AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             // Adds a default in-memory implementation of IDistributedCache
@@ -70,7 +77,7 @@ namespace Gaska
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Dashboard/Error");
             }
 
             app.UseStaticFiles();
