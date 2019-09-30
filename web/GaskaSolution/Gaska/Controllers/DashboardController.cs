@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Gaska.Controllers
 {
-    public class HomeController : Controller
+    public class DashboardController : Controller
     {
         private UserManager<ApplicationUser> userManager;
 
-        public HomeController(UserManager<ApplicationUser> userManager)
+        public DashboardController(UserManager<ApplicationUser> userManager)
         {
             this.userManager = userManager;
         }
@@ -18,14 +18,6 @@ namespace Gaska.Controllers
         // Dashboard
         [Authorize]
         public IActionResult Index()
-        {
-            var currentUserId = userManager.GetUserId(User);
-
-            return View();
-        }
-
-        [Authorize]
-        public IActionResult FuelCalculator(FuelCalculatorViewModel model)
         {
             var currentUserId = userManager.GetUserId(User);
 

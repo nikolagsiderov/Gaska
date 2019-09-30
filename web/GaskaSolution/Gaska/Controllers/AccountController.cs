@@ -105,7 +105,7 @@ namespace Gaska.Controllers
         public async Task<IActionResult> LogOff()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(DashboardController.Index), "Home");
         }
 
         //
@@ -175,7 +175,7 @@ namespace Gaska.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                return RedirectToAction(nameof(DashboardController.Index), "Home");
             }
         }
 
