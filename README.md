@@ -4,6 +4,6 @@ Gaska is an **ASP.NET Core MVC** project for calculating fuel consumption, stori
 
 # What I have learned
 
-* Further understanding of **MVC arhitecture**
+* Further understanding of **MVC architecture**
 * Working with code first principle with **Entity Framework Core**
 * Further understanding **Git** and ability to work with branches comfortably
