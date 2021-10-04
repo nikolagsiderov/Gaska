@@ -1,6 +1,6 @@
 # Gaska
 
-Gaska is an **ASP.NET Core MVC** project for calculating fuel consumption, storing service book logs and more.
+**ASP.NET Core MVC** project for calculating fuel consumption, storing service book logs and more.
 
 # What I have learned
 
